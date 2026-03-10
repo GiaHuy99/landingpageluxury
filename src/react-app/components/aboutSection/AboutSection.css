@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+/* --- CẤU TRÚC CHUNG --- */
+.layer-section {
+    width: 100%;
+    background-color: #f4f4f4; /* Nền xám xi măng nhạt (Rất tây) */
+    padding: 120px 20px;
+    display: flex;
+    justify-content: center;
+    overflow: visible; /* Để bóng đổ không bị cắt */
+}
+
+.layer-container {
+    max-width: 1100px;
+    width: 100%;
+    position: relative; /* Để căn chỉnh các lớp đè lên nhau */
+    min-height: 600px; /* Chiều cao tối thiểu để chứa đủ ảnh và chữ */
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+/* --- LỚP 1: ẢNH (NẰM BÊN PHẢI HOẶC TRÁI) --- */
+.layer-image-wrapper {
+    width: 65%; /* Chiếm 65% chiều rộng */
+    height: 550px;
+    position: absolute;
+    right: 0; /* Đẩy sát lề phải */
+    top: 0;
+    z-index: 1; /* Nằm dưới */
+    overflow: hidden;
+    /* Bóng đổ sâu tạo cảm giác ảnh nổi khỏi nền xám */
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+}
+
+.layer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+/* Hiệu ứng: Di chuột vào ảnh thì ảnh zoom nhẹ */
+.layer-image-wrapper:hover .layer-image {
+    transform: scale(1.03);
+}
+
+/* --- LỚP 2: THẺ CHỮ (NẰM ĐÈ LÊN) --- */
+.layer-content-card {
+    width: 45%; /* Chiếm 45% chiều rộng */
+    background-color: #ffffff;
+    padding: 60px 50px; /* Padding to để nội dung thoáng */
+    position: absolute;
+    left: 0; /* Nằm sát lề trái */
+    z-index: 2; /* Nổi lên trên ảnh */
+
+    /* Hiệu ứng bóng đổ nhẹ cho thẻ chữ */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Typography */
+.layer-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.layer-title {
+    font-family: 'Cormorant Garamond', serif; /* Font mới: Rất cổ điển và sang */
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.layer-title span {
+    font-style: italic;
+    color: #ab936d; /* Màu vàng cát (Sand Gold) */
+}
+
+.layer-separator {
+    width: 50px;
+    height: 1px;
+    background-color: #ddd;
+    margin-bottom: 30px;
+}
+
+.layer-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* Link thay vì nút bấm khối (Tinh tế hơn) */
+.layer-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #222;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.layer-link .arrow {
+    transition: transform 0.3s ease;
+}
+
+.layer-link:hover {
+    color: #ab936d;
+}
+
+.layer-link:hover .arrow {
+    transform: translateX(5px); /* Mũi tên chạy sang phải */
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .layer-section { padding: 60px 20px; }
+
+    .layer-container {
+        flex-direction: column; /* Xếp dọc */
+        height: auto;
+        display: block; /* Hủy flex để dùng flow thường */
+    }
+
+    /* Ảnh đẩy lên trên */
+    .layer-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        right: auto; top: auto;
+        margin-bottom: -50px; /* Kéo ảnh thụt xuống dưới thẻ chữ một xíu */
+    }
+
+    /* Thẻ chữ nằm dưới */
+    .layer-content-card {
+        position: relative;
+        width: 100%; /* Full màn hình */
+        left: auto;
+        padding: 40px 30px;
+        box-sizing: border-box; /* Quan trọng để không vỡ layout */
+    }
+
+    .layer-title { font-size: 2.5rem; }
+}

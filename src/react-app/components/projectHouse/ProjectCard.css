@@ -1,0 +1,246 @@
+/* ==================== CARD LAYOUT ==================== */
+.project-card {
+    width: 100% !important;
+    max-width: 650px;
+    margin: 0 auto !important;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    box-sizing: border-box;
+}
+
+.project-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    padding: 28px 40px 12px;
+    color: #111;
+    margin: 0;
+}
+
+/* ==================== SLIDER ==================== */
+.image-slider-container {
+    position: relative;
+    margin-bottom: 20px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Badges */
+.badges {
+    position: absolute;
+    top: 30px;
+    left: 30%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.badge {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+}
+
+/* --- NAVIGATION BUTTONS (MỚI - ĐẸP HƠN) --- */
+
+/* Tắt nút mặc định của Swiper */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none !important;
+}
+
+/* Style nút mới */
+.custom-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: white; /* Màu mũi tên trắng */
+
+    /* Đổ bóng để nổi bật trên nền ảnh */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.custom-nav-btn svg {
+    width: 30px;
+    height: 30px;
+}
+
+.custom-nav-btn:hover {
+    transform: translateY(-50%) scale(1.15); /* Phóng to nhẹ khi hover */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+}
+
+.nav-prev { left: 12px; }
+.nav-next { right: 12px; }
+
+/* Pagination dots */
+.swiper-pagination { bottom: 20px !important; }
+.swiper-pagination-bullet { width: 10px; height: 10px; background: rgba(255,255,255,0.6); }
+.swiper-pagination-bullet-active { background: white; transform: scale(1.4); }
+
+/* ==================== INFO BOX ==================== */
+.info-box {
+    background: #f8f9fa;
+    padding: 30px 40px;
+    border-radius: 0 0 20px 20px;
+}
+.info-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #ddd; }
+.label { font-size: 0.95rem; color: #666; font-weight: 500; }
+.value { font-size: 1.2rem; font-weight: 700; color: #111; }
+.value.highlight { color: #e74c3c; font-size: 1.4rem; }
+.note { text-align: center; margin: 20px 0 28px; color: #888; font-style: italic; font-size: 0.85rem; }
+.cta-button {
+    display: block; margin: 0 auto; background: #111; color: white; border: none;
+    padding: 14px 44px; border-radius: 40px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    transition: all 0.3s;
+}
+.cta-button:hover { background: #333; transform: translateY(-4px); }
+
+/* ==================== GALLERY MODAL ==================== */
+.gallery-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.gallery-popup {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+}
+
+.gallery-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.gallery-close-btn {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    color: #333;
+    padding: 0 10px;
+    transition: color 0.2s;
+}
+.gallery-close-btn:hover {
+    color: #e74c3c;
+}
+
+.gallery-content {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.main-image-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.gallery-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: 50vh;
+    margin: 0 auto;
+}
+
+.sub-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.sub-image-item {
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.sub-image-item.active {
+    border-color: #111;
+    transform: scale(0.95);
+}
+
+.sub-image-item img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.sub-image-item:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .sub-images-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,0 +1,131 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+.image-text-section {
+    width: 100%;
+    /* --- THAY ĐỔI 1: Xóa Padding --- */
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Ẩn thanh cuộn nếu có */
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+
+    /* --- THAY ĐỔI 2: Full màn hình --- */
+    height: 100vh; /* 100vh = 100% chiều cao màn hình thiết bị */
+    min-height: 600px; /* Đảm bảo không bị lùn quá trên màn hình ngang */
+
+    /* --- THAY ĐỔI 3: Vuông vức, không bo tròn --- */
+    border-radius: 0;
+
+    /* Bỏ bóng đổ bên ngoài vì giờ ảnh đã tràn viền */
+    box-shadow: none;
+
+    transform: translateZ(0);
+}
+
+.section-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh phủ kín màn hình không bị méo */
+
+    /* Hiệu ứng zoom chậm giữ nguyên */
+    transition: transform 10s ease; /* Tăng thời gian lên 10s cho mượt như phim */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Zoom cực nhẹ khi di chuột, tạo cảm giác ảnh đang thở */
+.image-container:hover .section-image {
+    transform: scale(1.03);
+}
+
+/* Ẩn lớp phủ tối toàn màn hình (theo yêu cầu cũ của bạn) */
+.dark-overlay {
+    display: none;
+}
+
+/* --- KHUNG KÍNH (GLASS CONTENT) --- */
+/* Giữ nguyên style này vì nó đang đẹp */
+.glass-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    /* Kính đen mờ để nổi bật trên ảnh sáng */
+    background: rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 50px 60px; /* Tăng padding chút cho thoáng vì màn hình giờ to hơn */
+    border-radius: 0; /* Khung chữ cũng nên vuông góc cho đồng bộ với màn hình */
+    text-align: center;
+    max-width: 700px; /* Cho phép khung rộng hơn xíu */
+    width: 90%;
+
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+/* --- TYPOGRAPHY --- */
+
+.overlay-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; /* Tăng nhẹ size chữ */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px; /* Dãn rộng hơn nữa cho sang */
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.overlay-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; /* Tăng size tiêu đề vì màn hình full */
+    font-weight: 400;
+    margin: 0 0 40px 0;
+    color: #ffffff;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.overlay-title span {
+    font-weight: 700;
+    font-style: italic;
+    background: linear-gradient(135deg, #FFE5B4, #E1C699);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.decorative-line {
+    width: 100px; /* Dài hơn chút */
+    height: 3px;
+    background: #E1C699;
+    margin: 0 auto;
+    border-radius: 0; /* Vuông góc */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .image-container {
+        height: 100vh; /* Mobile cũng full màn hình luôn */
+    }
+
+    .glass-content {
+        width: 85%;
+        padding: 30px 20px;
+        background: rgba(0, 0, 0, 0.5); /* Mobile cần nền đậm hơn để đọc chữ */
+    }
+
+    .overlay-title { font-size: 2.5rem; }
+    .overlay-subtitle { letter-spacing: 3px; font-size: 0.8rem; }
+}

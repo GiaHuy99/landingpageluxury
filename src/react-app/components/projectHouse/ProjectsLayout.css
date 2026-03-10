@@ -1,0 +1,30 @@
+/* src/components/ProjectsLayout.css */
+.projects-layout {
+    padding: 80px 5%;
+    background: #f0f2f4;
+}
+
+/* ====== GRID CHUẨN 2 CỘT ====== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Đảm bảo mỗi card luôn full trong ô grid */
+.projects-grid > * {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+

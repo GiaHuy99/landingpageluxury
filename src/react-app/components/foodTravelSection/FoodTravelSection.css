@@ -1,0 +1,112 @@
+.food-travel-section {
+    display: flex;
+    justify-content: space-between; /* tạo khoảng trắng giữa 2 ảnh */
+    flex-wrap: wrap; /* xuống 1 cột trên mobile */
+    width: 100%;
+    background-color: white;
+    padding-top: 20px; /* khoảng cách phía trên section */
+    margin-bottom: 10px;
+}
+
+.image-card {
+    position: relative;
+    width: calc(50% - 5px); /* mỗi ảnh 50% trừ 1 nửa khoảng trắng */
+    height: 500px; /* chiều cao cố định, có thể thay đổi */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+    transform: scale(1.05);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.overlay-text h3 {
+    margin: 0;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Responsive: mobile xuống 1 cột */
+@media (max-width: 768px) {
+    .image-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        height: 400px; /* thấp hơn trên mobile */
+    }
+}
+/* Click toàn bộ card */
+.clickable-card {
+    cursor: pointer;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.clickable-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.clickable-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Tiêu đề nhẹ nhàng ở góc dưới trái */
+.card-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.card-label h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.card-label p {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+}
+
+.clickable-card:hover .card-label {
+    background: rgba(0, 0, 0, 0.8);
+    color: white !important;
+}
+
+.clickable-card:hover .card-label h3,
+.clickable-card:hover .card-label p {
+    color: white !important;
+}

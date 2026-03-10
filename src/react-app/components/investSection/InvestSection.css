@@ -1,0 +1,176 @@
+/* InvestSection.css */
+
+/* Font setup: Import nếu chưa có trong index.html */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;700&display=swap');
+
+.full-image-overlay-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    box-sizing: border-box;
+    /* Font chung đổi sang Montserrat cho hiện đại, dễ đọc */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Ảnh nền + bo góc tinh tế hơn */
+.background-image-wrapper {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    /* Giảm bo góc từ 32px xuống 0 hoặc số nhỏ để tạo sự uy quyền */
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 12s ease;
+}
+
+/* Hiệu ứng zoom chậm sang trọng */
+.full-image-overlay-section:hover .background-image {
+    transform: scale(1.05);
+}
+
+/* Lớp phủ Gradient điện ảnh (Cinematic) */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Tối hơn ở 2 bên và dưới đáy để text nổi bật */
+    background: linear-gradient(
+            to right,
+            rgba(0,0,0,0.8) 0%,
+            rgba(0,0,0,0.4) 50%,
+            rgba(0,0,0,0.8) 100%
+    );
+    z-index: 2;
+}
+
+/* Nội dung */
+.content-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia đôi màn hình */
+    gap: 80px;
+    align-items: center;
+    color: white;
+}
+
+/* --- PHẦN TEXT (TRÁI) --- */
+.text-content {
+    padding-right: 20px;
+}
+
+.main-title {
+    font-size: 4rem; /* Giảm xíu cho đỡ thô */
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; /* Luxury không cần quá đậm (900), 700 là thanh lịch */
+    line-height: 1.2;
+    margin-bottom: 24px;
+    /* Đổi từ xám chết trôi (#999) sang Trắng kem hoặc Trắng tinh */
+    color: #ffffff;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
+}
+
+.main-description {
+    font-size: 1.15rem;
+    font-family: 'Lora', serif;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9); /* Trắng mờ nhẹ */
+    font-style: italic; /* Font Lora nghiêng nhìn rất thơ */
+    border-left: 3px solid #C5A059; /* Line vàng điểm nhấn */
+    padding-left: 20px;
+}
+
+/* --- PHẦN STATS GRID (PHẢI) --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* GLASSMORPHISM - Hiệu ứng kính mờ sang trọng */
+.stat-box {
+    /* Nền kính mờ */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px); /* Làm mờ hậu cảnh */
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Viền mỏng tinh tế */
+    border-radius: 16px; /* Bo góc vừa phải */
+    padding: 40px 24px;
+    text-align: left; /* Canh trái nhìn hiện đại hơn canh giữa */
+    transition: all 0.4s ease;
+}
+
+.stat-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    border-color: #C5A059; /* Hover hiện viền vàng */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Số liệu: Màu Vàng Kim (Luxury Gold) */
+.stat-box h3 {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif; /* Số dùng font có chân mới đẹp */
+    font-weight: 700;
+    margin: 0 0 5px 0;
+
+    /* Gradient Vàng kim loại */
+    background: linear-gradient(135deg, #FFE5B4 0%, #C5A059 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Chữ mô tả dưới số */
+.stat-box p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase; /* Chữ in hoa nhìn gọn gàng */
+    letter-spacing: 2px; /* Dãn chữ ra */
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .full-image-overlay-section { padding: 80px 20px; }
+    .content-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .text-content { text-align: center; padding-right: 0; }
+    .main-description {
+        border-left: none;
+        padding-left: 0;
+        max-width: 100%;
+    }
+    .stat-box { text-align: center; }
+}
+
+@media (max-width: 600px) {
+    .main-title { font-size: 2.5rem; }
+    .stats-grid { grid-template-columns: 1fr; } /* Mobile thì xếp dọc 1 cột */
+    .stat-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        text-align: left;
+    }
+    .stat-box h3 { font-size: 2.5rem; margin-bottom: 0; margin-right: 15px; }
+    .stat-box p { font-size: 0.8rem; letter-spacing: 1px; }
+}

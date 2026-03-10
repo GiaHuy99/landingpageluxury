@@ -1,0 +1,86 @@
+/* --- SECTION NGOÀI CÙNG --- */
+.luxury-gallery-section {
+    width: 100%;
+    background-color: #ffffff;
+    /* QUAN TRỌNG: Đưa padding về 0 để ảnh tràn ra sát mép màn hình */
+    padding: 0;
+    /* Thêm margin-bottom nếu muốn tách biệt với phần footer bên dưới */
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* --- CONTAINER CHỨA ẢNH --- */
+.luxury-gallery-container {
+    width: 100%;
+    display: flex;       /* Xếp hàng ngang */
+    /* QUAN TRỌNG: Khoảng cách siêu nhỏ giữa 2 ảnh (4px) */
+    gap: 4px;
+    height: 600px;       /* Giữ nguyên chiều cao cố định */
+}
+
+/* --- CẤU HÌNH TỶ LỆ (Giữ nguyên) --- */
+.rectangle-box { flex: 2.3; } /* Chiếm 2/3 */
+.square-box { flex: 2; }    /* Chiếm 1/3 */
+
+/* --- STYLE CHUNG CHO CẢ 2 KHỐI --- */
+.gallery-box {
+    position: relative;
+    /* QUAN TRỌNG: Bỏ bo góc để ảnh vuông vức chạm mép màn hình */
+    border-radius:20px;
+    overflow: hidden;
+    /* Bỏ bóng đổ vì khi tràn lề, bóng đổ nhìn sẽ bị lem nhem */
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.gallery-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Vẫn dùng thần chú này để ảnh không méo */
+    transition: transform 0.7s ease;
+    display: block;
+}
+
+/* Hiệu ứng Zoom nhẹ khi di chuột (Giữ nguyên cho sang) */
+.gallery-box:hover img {
+    transform: scale(1.05);
+}
+
+/* --- (Tùy chọn) Lớp phủ chữ trên ảnh (Giữ nguyên) --- */
+.box-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    /* Nếu thích nút vuông vức thì đổi thành 4px, không thì để 30px */
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.gallery-box:hover .box-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .luxury-gallery-container {
+        flex-direction: column; /* Xếp dọc trên điện thoại */
+        height: auto;
+        gap: 4px; /* Vẫn giữ khoảng cách nhỏ trên mobile */
+    }
+
+    .rectangle-box,
+    .square-box {
+        width: 100%;
+        height: 300px; /* Chiều cao trên mobile */
+        flex: none;
+    }
+}
