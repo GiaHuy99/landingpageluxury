@@ -2,8 +2,8 @@ import React from "react";
 import "./ImageGallery.css";
 
 // Bạn thay đường dẫn ảnh thật của bạn vào đây
-const imgSquare = "../../../public/images/ImageGallery/12.jpg"; // Ảnh 2048x2048
-const imgRect = "../../../public/images/ImageGallery/23.jpg";   // Ảnh 1080x608
+const imgSquare = "/images/ImageGallery/12.jpg"; // Ảnh 2048x2048
+const imgRect = "/images/ImageGallery/23.jpg";   // Ảnh 1080x608
 
 const ImageGallery: React.FC = () => {
     return (

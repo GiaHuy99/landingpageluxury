@@ -4,11 +4,11 @@ import "./Header.css";
 // Bạn thay đường dẫn ảnh của bạn vào đây.
 // Kể cả ảnh kích thước khác nhau cũng không sao.
 const images = [
-    "../../../public/images/hero/0a6562c864ccd99280dd22.jpg",
-    "../../../public/images/hero/1aa8147a8eb52aeb73a4191.jpg",
-    "../../../public/images/hero/4d15b0b1b7b50aeb53a45.jpg",
-    "../../../public/images/hero/60b207e826c69698cfd74.jpg",
-    "../../../public/images/hero/mobile_file_2024-08-07_05-39-16.jpg"
+    "/images/hero/0a6562c864ccd99280dd22.jpg",
+    "/images/hero/1aa8147a8eb52aeb73a4191.jpg",
+    "/images/hero/4d15b0b1b7b50aeb53a45.jpg",
+    "/images/hero/60b207e826c69698cfd74.jpg",
+    "/images/hero/mobile_file_2024-08-07_05-39-16.jpg"
 
 ];
 
